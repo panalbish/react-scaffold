@@ -1,9 +1,15 @@
 {
-  "name": "cra",
+  "name": "react-scaffold",
   "version": "0.1.0",
+  "description": "Scaffolding project based on create-react-app with some minimal modifications",
   "private": true,
   "devDependencies": {
     "ava": "^0.17.0",
+    "babel-preset-react-app": "^1.0.0",
+    "babel-register": "^6.18.0",
+    "cross-env": "^3.1.3",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^9.8.3",
     "react-scripts": "0.7.0"
   },
   "dependencies": {
@@ -14,7 +20,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test_default": "react-scripts test --env=jsdom",
-    "test": "ava",
+    "test": "cross-env NODE_ENV=test ava",
     "eject": "react-scripts eject"
+  },
+  "babel": {
+    "presets": "react-app"
+  },
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "babel-register",
+      "ignore-styles",
+      "./src/test-setup"
+    ]
   }
 }
